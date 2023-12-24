@@ -15,24 +15,34 @@ CONDA_ENV_PYTHON_VERSION=3.11
     fi
 }
 
-# 处理 conda
+# 处理 mamba
 {
-    if command -v conda &>/dev/null; then
-        eval "$(conda shell.bash hook)"
+    if command -v mamba &>/dev/null; then
+        eval "$(mamba shell hook --shell bash)"
+    elif command -v micromamba &>/dev/null; then
+        alias mamba='micromamba'
+        eval "$(mamba shell hook --shell bash)"
     else
-        echo "conda 未安装，正在安装 miniconda..."
-        brew install miniconda
+        echo "mamba 未安装，正在安装 micromamba..."
+        brew install micromamba -y
+        micromamba shell init -s zsh -p ~/micromamba
+        alias mamba='micromamba'
     fi
 }
 
-# 处理 conda 环境
+# 处理 mamba 环境
 {
-    if conda env list | grep -q $CONDA_ENV_NAME; then
-        conda activate $CONDA_ENV_NAME
+    if mamba env list | grep -q $CONDA_ENV_NAME; then
+        mamba activate $CONDA_ENV_NAME
     else
         echo "$CONDA_ENV_NAME 环境不存在，创建中..."
-        conda create --name $CONDA_ENV_NAME python=$CONDA_ENV_PYTHON_VERSION -y
-        conda activate $CONDA_ENV_NAME
+
+        mamba config append channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+        mamba config append channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+        mamba config append channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge
+
+        mamba create --name $CONDA_ENV_NAME python=$CONDA_ENV_PYTHON_VERSION -y
+        mamba activate $CONDA_ENV_NAME
     fi
 }
 
