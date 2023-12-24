@@ -31,7 +31,7 @@ CONDA_ENV_PYTHON_VERSION=3.11
         conda activate $CONDA_ENV_NAME
     else
         echo "$CONDA_ENV_NAME 环境不存在，创建中..."
-        conda create --name $CONDA_ENV_NAME python=$CONDA_ENV_PYTHON_VERSION
+        conda create --name $CONDA_ENV_NAME python=$CONDA_ENV_PYTHON_VERSION -y
         conda activate $CONDA_ENV_NAME
     fi
 }
