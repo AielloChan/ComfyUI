@@ -1,0 +1,8 @@
+{
+  "name": "comfyui",
+  "scripts": {
+    "start": "./start.sh",
+    "install:manager": "git clone https://github.com/ltdrdata/ComfyUI-Manager.git --depth=1 ./custom_nodes/manager",
+    "install:efficiency-nodes": "git clone git@github.com:jags111/efficiency-nodes-comfyui.git --depth=1 ./custom_nodes/efficiency-nodes"
+  }
+}
