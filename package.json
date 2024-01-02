@@ -3,6 +3,8 @@
   "scripts": {
     "start": "./start.sh",
     "install:manager": "git clone https://github.com/ltdrdata/ComfyUI-Manager.git --depth=1 ./custom_nodes/manager",
-    "install:efficiency-nodes": "git clone git@github.com:jags111/efficiency-nodes-comfyui.git --depth=1 ./custom_nodes/efficiency-nodes"
+    "install:efficiency-nodes": "git clone git@github.com:jags111/efficiency-nodes-comfyui.git --depth=1 ./custom_nodes/efficiency-nodes",
+    "install:apadapter-plus": "git clone git@github.com:cubiq/ComfyUI_IPAdapter_plus.git --depth=1 ./custom_nodes/apadapter-plus",
+    "install:alekpet-nodes": "git clone git@github.com:AlekPet/ComfyUI_Custom_Nodes_AlekPet.git --depth=1 ./custom_nodes/alekpet-nodes"
   }
 }
