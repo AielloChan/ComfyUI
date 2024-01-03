@@ -29,6 +29,8 @@ set -e
 
 # 处理 conda 环境
 {
+    conda init bash
+
     if conda env list | grep -q $CONDA_ENV_NAME; then
         conda activate $CONDA_ENV_NAME
     else
